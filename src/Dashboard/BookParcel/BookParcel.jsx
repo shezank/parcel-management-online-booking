@@ -27,9 +27,8 @@ const BookParcel = () => {
         setParcelWeight(weight);
     }
     const onSubmit = async (data) => {
-        const bookParcel = { ...data, parcelWeight: parcelWeight, parcelDeliveryPrice: price, status: 'Pending' }
-        
-        bookParcel.createdAt=new Date().toISOString()
+        const orderDate = new Date().toISOString().slice(0,10);
+        const bookParcel = { ...data, parcelWeight: parcelWeight, parcelDeliveryPrice: price, status: 'Pending', createdAt: orderDate }
         const res = await axiosSecure.post('/parcelBooks', bookParcel)
         if (res.data.insertedId) {
             toast.success(`${user.displayName} Successfully Booking Your Parcel`)

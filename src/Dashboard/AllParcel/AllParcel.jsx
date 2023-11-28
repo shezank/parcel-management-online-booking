@@ -2,6 +2,7 @@ import React from 'react';
 import useAxiosSecure from '../../Hoocks/useAxiosSecure/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
 
 const AllParcel = () => {
     const [id, setId] = useState('');
@@ -10,7 +11,6 @@ const AllParcel = () => {
         queryKey: ['parcelbooks'],
         queryFn: async () => {
             const res = await axiosSequre.get(`/parcelbooks`);
-            console.log(res.data)
             return res.data;
         }
     })
@@ -21,19 +21,18 @@ const AllParcel = () => {
         queryKey: ["delivery-Mans", deliverManRole],
         queryFn: async () => {
             const res = await axisoSecure.get(`/users/${deliverManRole}`)
-            console.log(deliveryMans);
             return res.data;
         }
     })
 
-    const handleCancelStatus = (id) => {
-        axiosSequre.patch(`/parcelbooks/statusUpdate/${id}`)
-            .then(res => {
-                console.log(res.data)
-                refetch()
-            })
+    // const handleCancelStatus = (id) => {
+    //     axiosSequre.patch(`/parcelbooks/statusUpdate/${id}`)
+    //         .then(res => {
+    //             console.log(res.data)
+    //             refetch()
+    //         })
 
-    }
+    // }
 
     const handeleAssign = async (e) => {
         e.preventDefault();
@@ -42,14 +41,12 @@ const AllParcel = () => {
         const date = form.date.value;
         const parcelId = form.parcelId.value;
         const assign = { approximateDeliveryDate: date, status, deliveryManID: id };
-        console.log(assign);
         const res = await axiosSequre.patch(`/parcelBooks/assign/${parcelId}`, assign)
         console.log(res.data);
         if (res.data.modifiedCount) {
-            toast.success(`${user.displayName} Successfully Booking Your Parcel`)
-            reset();
+            toast.success(`Parcel Successfully Assign `)
+            refetch();
         }
-
     }
 
 
@@ -57,7 +54,6 @@ const AllParcel = () => {
         const val = e.target.value;
         console.log(val);
         setId(val);
-
     }
 
     return (
@@ -88,7 +84,7 @@ const AllParcel = () => {
                                     <td>{parcelbook.phone}</td>
                                     <td>{parcelbook.createdAt}</td>
                                     <td>{parcelbook.parcelDeliveryDate}</td>
-                                <td>{parcelbook.parcelDeliveryPrice}</td>
+                                    <td>{parcelbook.parcelDeliveryPrice}</td>
                                     <td className={parcelbook.status === 'Cancel' && 'w-32 text-center text-red-700' || parcelbook.status === 'Pending' && 'w-32 text-center text-blue-600' || parcelbook.status === 'On The Way' && 'w-32 text-center text-green-400' || parcelbook.status === 'Delivery' && 'w-32 text-center text-green-700'}>{parcelbook.status}</td>
                                     <td>
                                         {/* <button onClick={() => handleCancelStatus(parcelbook._id)} disabled={parcelbook.status !== "pending"} className='btn mr-2'> Cancel</button> */}
@@ -162,6 +158,7 @@ const AllParcel = () => {
                     </table>
                 </div>
             </div>
+            <ToastContainer></ToastContainer>
         </div>
     );
 };

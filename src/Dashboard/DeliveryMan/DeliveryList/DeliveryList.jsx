@@ -1,12 +1,25 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import useAxiosSecure from '../../../Hoocks/useAxiosSecure/useAxiosSecure';
+import { AuthContext } from '../../../Sharde/AuthProvider/AuthProvider';
+import { useQuery } from '@tanstack/react-query';
 
 const DeliveryList = () => {
-    const parcelbooks = ["a", "b"]
+
+    const { user } = useContext(AuthContext);
+    const axiosSequre = useAxiosSecure()
+    const { data: parcelbooks, refetch } = useQuery({
+        queryKey: ['parcelbooks', user.email],
+        queryFn: async () => {
+            const res = await axiosSequre.get(`/parcelbooks/deliveryList/${user._id}`);
+            console.log(res.data)
+            return res.data;
+        }
+    })
     return (
-        <div className='m-10'>
+        <div className='m-5'>
             <h1 className='text-3xl font-bold text-center'>Your Booking Parcel: {parcelbooks?.length} </h1>
-            <div className='m-10'>
+            <div className='m-5'>
                 <div className="overflow-x-auto">
                     <table className="table">
                         {/* head */}

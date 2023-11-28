@@ -18,14 +18,12 @@ const Dashboard = () => {
                 <ul className='menu space-y-5'>
                     {isAdmin && <>
                         <li className='bg-slate-100 text-xl font-bold'><NavLink to='/dashboard/adminHome'> <FaHome></FaHome> Admin </NavLink></li>
-                        <li className='bg-slate-100 text-xl font-bold'><NavLink to='/dashboard/allusers'> <FaUser></FaUser>Users</NavLink></li>
                         <li className='bg-slate-100 text-xl font-bold'><NavLink to='/dashboard/allparcel'> <FaBookOpen></FaBookOpen>Parcels</NavLink></li>
                         <li className='bg-slate-100 text-xl font-bold'><NavLink to='/dashboard/deliverymans'> <FaRunning></FaRunning> Delivery Mans</NavLink></li>
-                        <li className='bg-slate-100 text-xl font-bold'><NavLink to='/dashboard/additems'> <FaIceCream></FaIceCream> Add Items</NavLink></li>
-                        <li className='bg-slate-100 text-xl font-bold'><NavLink to='/dashboard/manageitems'> <FaList></FaList> Manage Items</NavLink></li>
+                        <li className='bg-slate-100 text-xl font-bold'><NavLink to='/dashboard/allusers'> <FaUser></FaUser>Users</NavLink></li>
                         <hr />
                         <li className='bg-slate-100 text-xl font-bold'><NavLink to='/'> <FaHome></FaHome> Home</NavLink></li>
-                        <li className='bg-slate-100 text-xl font-bold'><NavLink to='/ourshop/salad'> <FaList></FaList> Menu</NavLink></li>
+                        
                     </>
                     }
                     {isUser &&
@@ -39,7 +37,7 @@ const Dashboard = () => {
 
                             <hr />
                             <li className='bg-slate-100 text-xl font-bold'><NavLink className='rounded-none' to='/'> <FaHome></FaHome> Home</NavLink></li>
-                            <li className='bg-slate-100 text-xl font-bold'><NavLink className='rounded-none' to='/ourshop/salad'> <FaList></FaList> Menu</NavLink></li>
+                            
                         </>}
                     {isDeliveryMan &&
                         <>
@@ -50,7 +48,7 @@ const Dashboard = () => {
 
                             <hr />
                             <li className='bg-slate-100 text-xl font-bold'><NavLink className='rounded-none' to='/'> <FaHome></FaHome> Home</NavLink></li>
-                            <li className='bg-slate-100 text-xl font-bold'><NavLink className='rounded-none' to='/ourshop/salad'> <FaList></FaList> Menu</NavLink></li>
+                            
                         </>}
 
 
