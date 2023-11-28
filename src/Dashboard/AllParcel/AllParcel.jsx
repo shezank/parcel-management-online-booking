@@ -1,13 +1,10 @@
 import React from 'react';
 import useAxiosSecure from '../../Hoocks/useAxiosSecure/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
-import { Link } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 
 const AllParcel = () => {
     const [id, setId] = useState('');
-    const { register, handleSubmit, formState: { errors }, reset } = useForm()
     const axiosSequre = useAxiosSecure()
     const { data: parcelbooks, refetch } = useQuery({
         queryKey: ['parcelbooks'],
@@ -43,16 +40,18 @@ const AllParcel = () => {
         const form = e.target;
         const status = 'On The Way';
         const date = form.date.value;
+        const parcelId = form.parcelId.value;
         const assign = { approximateDeliveryDate: date, status, deliveryManID: id };
         console.log(assign);
-        // const res = await axiosSequre.patch('/parcelBooks', assign)
-        // console.log(res.data);
-        // if (res.data.insertedId) {
-        //     toast.success(`${user.displayName} Successfully Booking Your Parcel`)
-        //     reset();
-        // }
+        const res = await axiosSequre.patch(`/parcelBooks/assign/${parcelId}`, assign)
+        console.log(res.data);
+        if (res.data.modifiedCount) {
+            toast.success(`${user.displayName} Successfully Booking Your Parcel`)
+            reset();
+        }
 
     }
+
 
     const handelDeliveryManId = e => {
         const val = e.target.value;
@@ -89,8 +88,8 @@ const AllParcel = () => {
                                     <td>{parcelbook.phone}</td>
                                     <td>{parcelbook.createdAt}</td>
                                     <td>{parcelbook.parcelDeliveryDate}</td>
-                                    <td>{parcelbook.parcelDeliveryPrice}</td>
-                                    <td className='text-center text-lg font-semibold'>{parcelbook.status}</td>
+                                <td>{parcelbook.parcelDeliveryPrice}</td>
+                                    <td className={parcelbook.status === 'Cancel' && 'w-32 text-center text-red-700' || parcelbook.status === 'Pending' && 'w-32 text-center text-blue-600' || parcelbook.status === 'On The Way' && 'w-32 text-center text-green-400' || parcelbook.status === 'Delivery' && 'w-32 text-center text-green-700'}>{parcelbook.status}</td>
                                     <td>
                                         {/* <button onClick={() => handleCancelStatus(parcelbook._id)} disabled={parcelbook.status !== "pending"} className='btn mr-2'> Cancel</button> */}
                                         <button className="btn" onClick={() => document.getElementById(parcelbook._id).showModal()}>Manage</button>
@@ -98,14 +97,25 @@ const AllParcel = () => {
 
                                         <dialog id={parcelbook._id} className="modal">
                                             <div className="modal-box">
-                                                <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                                                 <h1 className='text-center text-xl font-semibold my-5'>Mange Delivery: {parcelbook.Name}</h1>
                                                 <form onSubmit={handeleAssign} method="dialog">
+
                                                     {/* if there is a button in form, it will close the modal */}
+                                                    <div className="form-control  w-full max-w-xl ">
+                                                        <label className="label">
+                                                            <span className="label-text">Parcel Reciver User Id?</span>
+                                                        </label>
+                                                        <input
+                                                            readOnly
+                                                            value={parcelbook._id}
+                                                            name='parcelId'
+                                                            className="input input-bordered w-full" />
+                                                    </div>
                                                     <div className='flex gap-5'>
 
                                                         {/* Parcel Delivery Man */}
                                                         <div className="form-control w-full max-w-xs">
+
                                                             <label className="label">
                                                                 <span className="label-text">Select Delivery Man?</span>
                                                             </label>
@@ -118,7 +128,7 @@ const AllParcel = () => {
                                                             </select>
 
                                                         </div>
-                                                        <input type="text" name='productId' value={parcelbook._id} />
+
                                                         {/* Requested Delivery Date */}
                                                         <div className="form-control w-full max-w-xs">
                                                             <label className="label">
@@ -134,8 +144,13 @@ const AllParcel = () => {
                                                         <input className='btn text-center' type="submit" value='Assign' />
                                                     </div>
                                                 </form>
+                                                <form method="dialog">
+                                                    {/* if there is a button in form, it will close the modal */}
+                                                    <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                                                </form>
 
                                                 <p className="py-4"> HINT: Press ESC key or click on ✕ button to close</p>
+
                                             </div>
                                         </dialog>
                                     </td>
