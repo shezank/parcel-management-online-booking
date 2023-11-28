@@ -95,7 +95,7 @@ const AllUsers = () => {
                                 <tr key={user._id} className="bg-base-200">
                                     <th>{idx + 1}</th>
                                     <td>{user.name}</td>
-                                    <th>phone no</th>
+                                    <th>{user.phone}</th>
                                     <td>
                                         {user.role === 'Delivery Man' ? 'Delivery Man' :
                                             <button onClick={() => handleRoleDeliveryMan(user)} className="btn btn-ghost btn-xs hover:bg-orange-500 bg-orange-400 text-white mr-2"><FaRunning></FaRunning></button>

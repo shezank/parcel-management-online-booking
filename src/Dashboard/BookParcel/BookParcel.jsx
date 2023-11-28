@@ -1,16 +1,12 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../Sharde/AuthProvider/AuthProvider';
-import DatePicker from "react-datepicker";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
-import "react-datepicker/dist/react-datepicker.css";
 import useAxiosSecure from '../../Hoocks/useAxiosSecure/useAxiosSecure';
-import { useQuery } from '@tanstack/react-query';
 
 const BookParcel = () => {
-    const [startDate, setStartDate] = useState(new Date());
+
     const [parcelWeight, setParcelWeight] = useState(0);
     const [price, setPrice] = useState(0);
     const axiosSecure = useAxiosSecure()
@@ -32,11 +28,12 @@ const BookParcel = () => {
     }
     const onSubmit = async (data) => {
         const bookParcel = { ...data, parcelWeight: parcelWeight, parcelDeliveryPrice: price, status: 'Pending' }
-        console.log(bookParcel)
+        
+        bookParcel.createdAt=new Date().toISOString()
         const res = await axiosSecure.post('/parcelBooks', bookParcel)
         if (res.data.insertedId) {
             toast.success(`${user.displayName} Successfully Booking Your Parcel`)
-            // reset();
+            reset();
         }
 
     }
@@ -174,9 +171,8 @@ const BookParcel = () => {
                         {/* <DatePicker className="input input-bordered w-full max-w-xs" selected={startDate} onChange={(date) => setStartDate(date)} /> */}
                         <input
                             {...register("parcelDeliveryDate")}
+                            name='parcelDeliveryDate'
                             type="date"
-                            defaultValue={startDate}
-                            placeholder="Parcel Delivery Address"
                             className="input input-bordered w-full max-w-xs" />
                     </div>
                 </div>
