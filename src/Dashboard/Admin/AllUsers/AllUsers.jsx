@@ -74,12 +74,6 @@ const AllUsers = () => {
             .then(data => setUsers(data))
     }, [currentPage, itemsPerPage]);
 
-    const handleItemsPerPage = e => {
-        const val = parseInt(e.target.value);
-        console.log(val);
-        setItemsPerPage(val);
-        setCurrentPage(0);
-    }
 
     const handlePrevPage = () => {
         if (currentPage > 0) {

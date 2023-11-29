@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import useAxiosSecure from '../useAxiosSecure/useAxiosSecure';
 import { AuthContext } from '../../Sharde/AuthProvider/AuthProvider';
 import { useQuery } from '@tanstack/react-query';
@@ -12,7 +12,7 @@ const useDeliveryMan = () => {
         queryFn: async () => {
             if (user) {
                 const res = await axisoSecure.get(`/users/deliveryman/${user?.email}`);
-                console.log(res.data)
+                console.log(res.data.deliveryMan)
                 return res.data?.deliveryMan;
             }
         }

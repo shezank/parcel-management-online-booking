@@ -85,7 +85,7 @@ const AllParcel = () => {
                                     <td>{parcelbook.createdAt}</td>
                                     <td>{parcelbook.parcelDeliveryDate}</td>
                                     <td>{parcelbook.parcelDeliveryPrice}</td>
-                                    <td className={parcelbook.status === 'Cancel' && 'w-32 text-center text-red-700' || parcelbook.status === 'Pending' && 'w-32 text-center text-blue-600' || parcelbook.status === 'On The Way' && 'w-32 text-center text-green-400' || parcelbook.status === 'Delivery' && 'w-32 text-center text-green-700'}>{parcelbook.status}</td>
+                                    <td className={parcelbook.status === 'Cancel' && 'w-32 text-center text-red-700' || parcelbook.status === 'Pending' && 'w-32 text-center text-blue-600' || parcelbook.status === 'On The Way' && 'w-32 text-center text-green-400' || parcelbook.status === 'Delivered' && 'w-32 text-center text-green-700'}>{parcelbook.status}</td>
                                     <td>
                                         {/* <button onClick={() => handleCancelStatus(parcelbook._id)} disabled={parcelbook.status !== "pending"} className='btn mr-2'> Cancel</button> */}
                                         <button className="btn" onClick={() => document.getElementById(parcelbook._id).showModal()}>Manage</button>

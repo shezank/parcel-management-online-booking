@@ -68,9 +68,9 @@ const MyParcels = () => {
                                     <th>{idx + 1}</th>
                                     <td>{parcelbook.parcelType}</td>
                                     <td>{parcelbook.parcelDeliveryDate}</td>
-                                    <td>{(parcelbook.createdAt).slice('T')}</td>
+                                    <td>{parcelbook.createdAt}</td>
                                     <td>{parcelbook.deliveryManID}</td>
-                                    <td className={parcelbook.status === 'Cancel' && 'w-32 text-center text-red-700' || parcelbook.status === 'Pending' && 'w-32 text-center text-blue-600' || parcelbook.status === 'On The Way' && 'w-32 text-center text-green-400' || parcelbook.status === 'Delivery' && 'w-32 text-center text-green-700'}>{parcelbook.status}</td>
+                                    <td className={parcelbook.status === 'Cancel' && 'w-32 text-center text-red-700' || parcelbook.status === 'Pending' && 'w-32 text-center text-blue-600' || parcelbook.status === 'On The Way' && 'w-32 text-center text-green-400' || parcelbook.status === 'Delivered' && 'w-32 text-center text-green-700'}>{parcelbook.status}</td>
                                     <td>
                                         <button onClick={() => handleCancelStatus(parcelbook)} disabled={parcelbook.status !== "Pending"} className='btn mr-2'> Cancel</button>
                                         <Link to={`/dashboard/parcelupdate/${parcelbook._id}`}><button disabled={parcelbook.status !== "Pending"} className='btn'>Update</button></Link>

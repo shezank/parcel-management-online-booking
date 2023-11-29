@@ -41,7 +41,7 @@ const Dashboard = () => {
                         </>}
                     {isDeliveryMan &&
                         <>
-                            <li className='bg-slate-100 text-xl font-bold'><NavLink className='rounded-none' to='/dashboard/deliveryMan'> <FaHome></FaHome> Home </NavLink></li>
+                            <li className='bg-slate-100 text-xl font-bold'><NavLink className='rounded-none' to='/dashboard/deliveryManHome'> <FaHome></FaHome> Home </NavLink></li>
                             <li className='bg-slate-100 text-xl font-bold'><NavLink className='rounded-none' to='/dashboard/deliveryList'> <FaList></FaList> Delivery List </NavLink></li>
                             <li className='bg-slate-100 text-xl font-bold'><NavLink className='rounded-none' to='/dashboard/reviews'> <FaStar></FaStar> Review </NavLink></li>
 
