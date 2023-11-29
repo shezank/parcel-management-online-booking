@@ -1,51 +1,29 @@
 import React, { useEffect, useState } from 'react';
-import { FaRunning, FaTrash, FaUserCircle } from 'react-icons/fa';
+import { FaRunning, FaUserCircle } from 'react-icons/fa';
 import swal from 'sweetalert';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import useAxiosSecure from '../../../Hoocks/useAxiosSecure/useAxiosSecure';
+import useAdmin from '../../../Hoocks/useAdmin/useAdmin';
+
 
 
 const AllUsers = () => {
-
-    const handleUserDelete = id => {
-        swal({
-            title: "Are you sure?",
-            text: "Once deleted, you will not be able to recover this imaginary file!",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-        })
-            .then((willDelete) => {
-                if (willDelete) {
-                    axisoSecure.delete(`/users/${id}`)
-                        .then(res => {
-                            console.log(res.data);
-                            if (res.data.deletedCount) {
-                                swal("Poof! Your imaginary file has been deleted!", {
-                                    icon: "success",
-                                });
-                                refetch();
-                            }
-                        })
-                } else {
-                    swal("Your imaginary file is safe!");
-                }
-            });
-    }
-
+    const [refetch] = useAdmin()
+    const axiosSequre = useAxiosSecure();
     const handleRoleManage = user => {
-        axisoSecure.patch(`/users/admin/${user._id}`)
+        axiosSequre.patch(`/users/admin/${user._id}`)
             .then(res => {
                 console.log(res.data.modifiedCount);
                 if (res.data) {
-                    refetch()
+                    // refetch()
                     toast.success(`${user.name} Make A Admin Now`);
                 }
             })
     }
 
     const handleRoleDeliveryMan = user => {
-        axisoSecure.patch(`/users/deliveryman/${user._id}`)
+        axiosSequre.patch(`/users/deliveryman/${user._id}`)
             .then(res => {
                 console.log(res.data.modifiedCount);
                 if (res.data.modifiedCount) {

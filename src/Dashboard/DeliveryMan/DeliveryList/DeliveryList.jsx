@@ -95,8 +95,8 @@ const DeliveryList = () => {
                                     <td>{parcelbook.parcelDeliveryAddress}</td>
                                     <td>
                                         {/* You can open the modal using document.getElementById('ID').showModal() method */}
-                                        <button className="btn btn-success text-white" onClick={() => document.getElementById('my_modal_3').showModal()}>See Location</button>
-                                        <dialog id="my_modal_3" className="modal">
+                                        <button className="btn btn-success text-white" onClick={() => document.getElementById(parcelbook._id).showModal()}>See Location</button>
+                                        <dialog id={parcelbook._id} className="modal">
                                             <div className="modal-box">
                                                 <LocationMap></LocationMap>
                                                 <form method="dialog">
