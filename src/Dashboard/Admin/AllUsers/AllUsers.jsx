@@ -28,7 +28,7 @@ const AllUsers = () => {
                 console.log(res.data.modifiedCount);
                 if (res.data.modifiedCount) {
                     toast.success(`${user.name} Make A Delivery Man Now`);
-                    refetch()
+                    // refetch()
                 }
             })
     }
