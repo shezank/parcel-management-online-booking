@@ -6,15 +6,13 @@ import CountUp from 'react-countup';
 
 const Statistics = () => {
    
-    const axiosSequre = useAxiosSecure();
     const axiosPublice = useAxiosPublic();
-    const {data: Count = {}, users, refetch} = useQuery({
+    const {data: Count = {}} = useQuery({
         queryKey: ['count-All'],
         queryFn:  async() =>{
          const res = await axiosPublice.get('/Countall')
          console.log(res.data)
          return res.data;
-        
         }
     })
 
