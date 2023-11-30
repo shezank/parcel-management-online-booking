@@ -41,13 +41,13 @@ const AllUsers = () => {
     const pages = [...Array(numberOfPages).keys()];
 
     useEffect(() => {
-        fetch('http://localhost:5000/usersCount')
+        fetch('https://percel-management-web-server.vercel.app/usersCount')
             .then(res => res.json())
             .then(data => setCount(data.count))
     }, [])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/users/count?page=${currentPage}&size=${itemsPerPage}`)
+        fetch(`https://percel-management-web-server.vercel.app/users/count?page=${currentPage}&size=${itemsPerPage}`)
             .then(res => res.json())
             .then(data => setUsers(data))
     }, [currentPage, itemsPerPage]);

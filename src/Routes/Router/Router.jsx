@@ -59,7 +59,7 @@ const Router = createBrowserRouter([
         {
           path: 'parcelupdate/:id',
           element: <UpdateBooking></UpdateBooking>,
-          loader: ({params})=> fetch(`http://localhost:5000/parcelBooks/update/${params.id}`)
+          loader: ({params})=> fetch(`https://percel-management-web-server.vercel.app/parcelBooks/update/${params.id}`)
 
         },
         {
