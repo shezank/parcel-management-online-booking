@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Sharde/AuthProvider/AuthProvider';
 
 const axisoSecure = axios.create({
-    baseURL: 'http://localhost:5000'
+    baseURL: 'https://percel-management-web-server.vercel.app'
 })
 
 const useAxiosSecure = () => {
