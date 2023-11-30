@@ -7,8 +7,10 @@ const Bannar = () => {
             <div className="hero-content text-center text-neutral-content w-full">
 
                 <div className="w-full">
-                    <h1 className='text-7xl font-bold'><span className='text-blue-500'>Trust</span> <span className='text-red-500'>Line</span></h1>
-                    
+                    <div className='my-10'>
+                        <h1 className='text-7xl font-bold'><span className='text-blue-500'>Trust</span> <span className='text-red-500'>Line</span></h1>
+                        <p className='text-center text-5xl font-semibold'>Now You Can Booking Your Parcel Onlice</p>
+                    </div>
                     <form>
                         <div className='flex max-w-3xl mx-auto'>
                             <input type="text" placeholder="Search Here" className="input input-bordered w-full" />
