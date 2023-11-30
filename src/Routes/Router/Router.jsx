@@ -20,6 +20,7 @@ import DaliveryMans from '../../Dashboard/DaliveryMans/DaliveryMans';
 import DeliveryManHome from '../../Dashboard/DeliveryMan/DeliveryManHome/DeliveryManHome';
 import DeliveryList from '../../Dashboard/DeliveryMan/DeliveryList/DeliveryList';
 import Reviews from '../../Dashboard/DeliveryMan/Reviews/Reviews';
+import AdminRoute from '../../Sharde/AdminRoute/AdminRoute';
 
 const Router = createBrowserRouter([
     {
@@ -68,19 +69,19 @@ const Router = createBrowserRouter([
         },
         {
           path: 'adminHome',
-          element: <AdminHome></AdminHome>
+          element: <AdminRoute><AdminHome></AdminHome></AdminRoute> 
         },
         {
           path: 'allusers',
-          element: <AllUsers></AllUsers>
+          element:  <AdminRoute><AllUsers></AllUsers></AdminRoute>
         },
         {
           path: 'deliverymans',
-          element: <DaliveryMans></DaliveryMans>,
+          element: <AdminRoute><DaliveryMans></DaliveryMans></AdminRoute>,
         },
         {
           path: 'allparcel',
-          element: <AllParcel></AllParcel>
+          element: <AdminRoute><AllParcel></AllParcel></AdminRoute>
         },
         {
           path: 'deliveryManHome',
