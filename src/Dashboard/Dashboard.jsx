@@ -32,8 +32,6 @@ const Dashboard = () => {
                             <li className='bg-slate-100 text-xl font-bold'><NavLink className='rounded-none' to='/dashboard/myProfile'> <FaUserCircle></FaUserCircle> My Profile </NavLink></li>
                             <li className='bg-slate-100 text-xl font-bold'><NavLink className='rounded-none' to='/dashboard/bookParcel'> <FaBookOpen></FaBookOpen> Book A Parcel </NavLink></li>
                             <li className='bg-slate-100 text-xl font-bold'><NavLink className='rounded-none' to='/dashboard/myParcel'> <FaFirstOrder></FaFirstOrder> My Parcel </NavLink></li>
-                            <li className='bg-slate-100 text-xl font-bold'><NavLink className='rounded-none' to='/dashboard/addreview'> <FaStreetView></FaStreetView> Add Review</NavLink></li>
-                            <li className='bg-slate-100 text-xl font-bold'><NavLink className='rounded-none' to='/dashboard/paymentsHistory'> <FaWallet></FaWallet> Payments History</NavLink></li>
 
                             <hr />
                             <li className='bg-slate-100 text-xl font-bold'><NavLink className='rounded-none' to='/'> <FaHome></FaHome> Home</NavLink></li>

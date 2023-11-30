@@ -50,11 +50,20 @@ const Navbar = () => {
                         </li>
 
 
-                       
+                        {user ?
+                            <>
                                 {isAdmin && <Link to='/dashboard/adminHome'><li><button>Dashboard</button></li></Link>}
                                 {isUser && <Link to='/dashboard/userHome'><li><button>Dashboard</button></li></Link>}
                                 {isDeliveryMan && <Link to='/dashboard/deliveryManHome'><li><button>Dashboard</button></li></Link>}
-                           
+                            </>
+                            :
+                            <span className="loading loading-bars loading-lg"></span>
+
+                        }
+
+
+
+
 
                         <button onClick={() => logout()}>Logout</button>
 

@@ -8,8 +8,8 @@ const Bannar = () => {
 
                 <div className="w-full">
                     <div className='my-10'>
-                        <h1 className='text-7xl font-bold'><span className='text-blue-500'>Trust</span> <span className='text-red-500'>Line</span></h1>
-                        <p className='text-center text-5xl font-semibold'>Now You Can Booking Your Parcel Onlice</p>
+                        <h1 className='md:text-7xl text-3xl font-bold'><span className='text-blue-500'>Trust</span> <span className='text-red-500'>Line</span></h1>
+                        <p className='text-center text-3xl md:text-5xl font-semibold'>Now You Can Booking Your Parcel Onlice</p>
                     </div>
                     <form>
                         <div className='flex max-w-3xl mx-auto'>

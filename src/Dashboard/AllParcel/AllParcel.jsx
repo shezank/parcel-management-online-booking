@@ -24,16 +24,7 @@ const AllParcel = () => {
             return res.data;
         }
     })
-
-    // const handleCancelStatus = (id) => {
-    //     axiosSequre.patch(`/parcelbooks/statusUpdate/${id}`)
-    //         .then(res => {
-    //             console.log(res.data)
-    //             refetch()
-    //         })
-
-    // }
-
+    
     const handeleAssign = async (e) => {
         e.preventDefault();
         const form = e.target;
